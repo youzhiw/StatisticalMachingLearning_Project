@@ -1,0 +1,40 @@
+The c_readindata is a stored python object. You will need the following code to read it:
+
+def retrieveVariables(filename):
+    variables = []
+    with open(str(filename), 'rb') as file:
+        variables = pickle.load(file)
+    return variables
+
+wdir = "./" #working directory
+
+[envelop_signal, sPmP_time, sPmP_label, 
+ dist, evdp, mag, stlo, 
+ stla, evlo, evla, evid, 
+ fname] = retrieveVariables(f"{wdir}/data/c_readindata")
+
+Below is what each of the variables respresent:
+
+`envelop_signal` A smooth curve outline the extremes of the seismic wave
+
+`sPmP_time` Arrival time of the sPmP wave
+
+`sPmP_label` Indication of whether the wave has a good sPmP signal, 0 for bad, 1 for good.
+
+`dist` Distance of the seismic event in relation to the seismic station that recorded the waveform.
+
+`evdp` The depth of the seismic event that the waveform is from.
+
+`mag` The magnitude of the seismic event (Earthquake).
+
+`stlo` The longitude of the seismic station.
+
+`stla` The latitude of the seimic sation
+
+`evlo` The longitude of the seismic event.
+
+`evla` The latitude of the seismic event.
+
+`evid` Event ID, a unique identifier for the seismic event.
+
+`fname` Filename that stored all the above information. The Filename is formatted as Time of the seismic event concatenated with the seismic station that recorded the waveform.
